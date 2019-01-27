@@ -11,6 +11,10 @@ namespace AngularMVCCore
     [Route("api/[controller]")]
     public class ClientesController : Controller
     {
+        private static string[] Nombres = new[]
+        {
+            "Jaimito", "Juanito", "Laurita", "Raulito", "Alvarito", "Fran", "Pablito", "Joselito", "Maria", "Amazon"
+        };
         // GET: api/<controller>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -20,9 +24,15 @@ namespace AngularMVCCore
 
         // GET api/<controller>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IEnumerable<ClienteUser> Get(int id)
         {
-            return "value";
+            var rng = new Random();
+            return Enumerable.Range(1, 5).Select(index => new ClienteUser
+            {
+                DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
+                Edad = rng.Next(18, 65),
+                Nombre = Nombres[rng.Next(Nombres.Length)]
+            });
         }
 
         // POST api/<controller>
@@ -41,6 +51,12 @@ namespace AngularMVCCore
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+        public class ClienteUser
+        {
+            public string DateFormatted { get; set; }
+            public int Edad { get; set; }
+            public string Nombre { get; set; }
         }
     }
 }

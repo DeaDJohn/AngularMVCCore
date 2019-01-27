@@ -9,19 +9,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClientesComponent {
     private name = 'Clientes';
-  public forecasts: WeatherForecast[];
+  public clientes: Cliente[];
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'api/Clientes/WeatherForecasts').subscribe(result => {
-      this.forecasts = result;
-      console.log(result);
-    }, error => console.error(error));
-  }
+    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+      http.get<Cliente[]>(baseUrl + 'api/Clientes/Get').subscribe(result => {
+            console.log(result);
+            this.clientes = result;
+        }, error => console.error(error));
+    }
 }
 
-interface WeatherForecast {
+interface Cliente {
   dateFormatted: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+  Edad: number;
+  nombre: string;
 }
