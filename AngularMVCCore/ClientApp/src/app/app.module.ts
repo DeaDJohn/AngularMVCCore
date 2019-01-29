@@ -11,6 +11,8 @@ import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { ClientesComponent } from './clientes/clientes.component';
 
+import { ClienteFilterPipe } from '../pipes/cliente-filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,8 @@ import { ClientesComponent } from './clientes/clientes.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    ClientesComponent
+    ClientesComponent,
+    ClienteFilterPipe
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

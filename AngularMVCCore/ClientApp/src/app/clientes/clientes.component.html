@@ -1,7 +1,7 @@
 <h1>{{name}}</h1>
 
-<p *ngIf="!clientes"><em>Loading...</em></p>
 
+<input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox">
 <table class='table' *ngIf="clientes">
   <thead>
     <tr>
@@ -11,7 +11,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cliente of clientes">
+    <tr *ngFor="let cliente of clientes | clienteFilter: {nombre: searchText, edad:searchText};">
       <td>{{ cliente.dateFormatted }}</td>
       <td>{{ cliente.nombre }}</td>
       <td>{{ cliente.edad }}</td>

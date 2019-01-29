@@ -9,7 +9,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ClientesComponent {
     private name = 'Clientes';
-  public clientes: Cliente[];
+    public clientes: Cliente[];
+    public searchText: string;
 
     constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
       http.get<Cliente[]>(baseUrl + 'api/Clientes/Get').subscribe(result => {
